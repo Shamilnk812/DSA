@@ -71,20 +71,36 @@ class BST :
             self.key = node.key 
             self.rchild = self.rchild.delete_values(node.key)
         return self
+    
 
-    def pre_order(self) :
+    # Pre-order traversal (Root -> Left -> Right)
+    def pre_order(self):
         print(self.key, end=' ')
-        if self.lchild :
+        if self.lchild:
             self.lchild.pre_order()
-        if self.rchild :
-            self.rchild.pre_order() 
+        if self.rchild:
+            self.rchild.pre_order()
+
+    # In-order traversal (Left -> Root -> Right)
+    def in_order(self):
+        if self.lchild:
+            self.lchild.in_order()
+        print(self.key, end=' ')
+        if self.rchild:
+            self.rchild.in_order()
+
+    # Post-order traversal (Left -> Right -> Root)
+    def post_order(self):
+        if self.lchild:
+            self.lchild.post_order()
+        if self.rchild:
+            self.rchild.post_order()
+        print(self.key, end=' ')          
+
 
 arr = [25,10,40,8,3,50]
 
 b1 = BST(15)      
 for i in arr :
     b1.insert_values(i)
-b1.pre_order()
-b1.delete_values(40)
-print('')
 b1.pre_order()
