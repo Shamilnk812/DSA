@@ -25,3 +25,17 @@ class Stack:
         return len(self.stack)
 
 
+# Reverse a string using a stack
+
+def reverse_strings(strr) :
+    stack = Stack()
+    for char in strr:
+        stack.push(char)
+    
+    reversed_str = ''
+    while not stack.is_empty():
+        reversed_str += stack.pop()    
+
+    return reversed_str
+
+
