@@ -97,6 +97,20 @@ class BST :
             self.rchild.post_order()
         print(self.key, end=' ')          
 
+    # Finding the minimum value
+    def find_min(self):
+        current = self
+        while current.lchild :
+            current = current.lchild
+        return current.key    
+    
+    # Finding the maximum value
+    def find_max(self):
+        current = self
+        while current.rchild:
+            current = current.rchild 
+        return current.key    
+
 
 arr = [25,10,40,8,3,50]
 
@@ -104,3 +118,5 @@ b1 = BST(15)
 for i in arr :
     b1.insert_values(i)
 b1.pre_order()
+
+print(b1.find_min())
