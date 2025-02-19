@@ -18,7 +18,10 @@ def build_max_heap(arr):
     for i in range(starting_index,-1,-1):
         heapify(arr,n,i)
 
-
+    # swap fist element and last element 
+    for j in range(n-1,0,-1):
+        arr[0],arr[j] = arr[j],arr[0]
+        heapify(arr,j,0)
 
 
 arr = [22,33,55,155,90,3]
