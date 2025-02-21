@@ -110,13 +110,32 @@ class BST :
         while current.rchild:
             current = current.rchild 
         return current.key    
+    
+
+    def find_second_smallest_values(self):
+        current_node = self
+        parent = None
+        while current_node and current_node.lchild:
+            parent = current_node
+            current_node = current_node.lchild
+
+        if current_node.rchild:
+            node = current_node.rchild
+            while node.lchild:
+                node = node.lchild
+            return node.key    
+        return parent.key         
 
 
-arr = [25,10,40,8,3,50]
+    
+
+arr = [25,10,40,8,3,50,-1,45]
 
 b1 = BST(15)      
 for i in arr :
     b1.insert_values(i)
 b1.pre_order()
 
-print(b1.find_min())
+# print(b1.find_min())
+print('-------')
+print(b1.find_second_smallest_values())
