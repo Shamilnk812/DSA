@@ -126,10 +126,23 @@ class BST :
             return node.key    
         return parent.key         
 
+    def find_second_largest_value(self):
+        current_node = self
+        parent_node = None
+        while current_node and current_node.rchild:
+            parent_node = current_node
+            current_node = current_node.rchild
 
+        if current_node.lchild:
+            node = current_node.lchild
+            while node.lchild:
+                node = node.lchild
+            return node.key
+
+        return parent_node.key        
     
 
-arr = [25,10,40,8,3,50,-1,45]
+arr = [25,100,40,8,3,200,50,-1,45]
 
 b1 = BST(15)      
 for i in arr :
@@ -139,3 +152,5 @@ b1.pre_order()
 # print(b1.find_min())
 print('-------')
 print(b1.find_second_smallest_values())
+print('---------')
+print(b1.find_second_largest_value())
