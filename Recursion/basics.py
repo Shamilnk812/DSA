@@ -10,6 +10,17 @@ def find_sum_of_an_array(arr,n):
         return 0
     return arr[n-1] + find_sum_of_an_array(arr,n-1)
 
+
+def is_palidrome(strr):
+    if len(strr) <= 1 :
+        return True
+    if strr[0] != strr[-1]:
+        return False
+    return is_palidrome(strr[1:-1])
+
+
+
+
 print(find_factorail(6))
 print(find_sum_of_an_array([1,2,3,4,5],len([1,2,3,4,5])))
-
+print(is_palidrome('maaaaam'))
