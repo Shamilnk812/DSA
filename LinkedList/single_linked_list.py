@@ -81,14 +81,52 @@ class SinglyLinkedList:
             current_node.next = new_node
 
     
+#------------ DELETION  -----------
 
+    def delete_first_element(self):
+        if self.head is None :
+            print('linked list is empty')
+        else:
+            self.head = self.head.next
+    
+
+    def delete_last_element(self):
+        if self.head is None:
+            print('linked list is empty')
+        else:
+            current_node = self.head
+            prev = None
+            while current_node.next is not None:
+                prev = current_node
+                current_node = current_node.next
+            
+            if prev is None :
+                self.head = self.head.next
+            else:
+                prev.next = current_node.next    
+    
+
+    def delete_any_node(self,target):
+
+        current_node = self.head
+        prev = None
+        while current_node:
+            if current_node.data == target:
+                if prev is None:
+                    self.head = self.head.next
+                else:
+                    prev.next = current_node.next
+                return
+            prev = current_node
+            current_node = current_node.next
+        print(f'{target} give target is not present')                
         
 
                 
 l1 = SinglyLinkedList()
-arr = [2,3,5,7]
+arr = [2,4,6,8,10,12]
 for i in arr :
     l1.add_last(i)
 
-l1.add_before_node(111,6)
+l1.delete_any_node(12)
 l1.print_list()
