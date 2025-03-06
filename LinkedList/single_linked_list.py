@@ -120,13 +120,26 @@ class SinglyLinkedList:
             prev = current_node
             current_node = current_node.next
         print(f'{target} give target is not present')                
-        
 
+
+    # Reverse linked list
+    def reverse(self):
+        current_node = self.head
+        prev = None
+        while current_node:
+            next_node = current_node.next
+            current_node.next = prev
+            prev = current_node
+            current_node = next_node
+        
+        self.head = prev
                 
 l1 = SinglyLinkedList()
 arr = [2,4,6,8,10,12]
 for i in arr :
     l1.add_last(i)
 
-l1.delete_any_node(12)
+l1.print_list()
+print()
+l1.reverse()
 l1.print_list()
