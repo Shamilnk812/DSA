@@ -133,13 +133,66 @@ class SinglyLinkedList:
             current_node = next_node
         
         self.head = prev
-                
+    
+
+#------------ Sorting -----------
+    # find the middle element
+    def find_middle(self,head):
+        if not head or not head.next:
+            return head
+        
+        slow = head
+        fast = head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow    
+
+   
+    def merge_two_sorted_part(self,left,right):
+        if not left :
+            return right
+        if not right:
+            return left
+        
+        if left.data < right.data:
+            result = left
+            result.next = self.merge_two_sorted_part(left.next,right)
+        else:
+            result = right
+            result.next = self.merge_two_sorted_part(left,right.next)
+
+        return result        
+
+
+    def merge_sort(self,head):
+        if not head or head.next is None:
+            return head
+        
+        middle = self.find_middle(head)
+        new_head = middle.next
+        middle.next = None
+
+        left_side = self.merge_sort(head)
+        right_side = self.merge_sort(new_head)
+
+        return self.merge_two_sorted_part(left_side,right_side)
+
+
+    def sort(self):
+        self.head = self.merge_sort(self.head)
+
+
+
+
+
 l1 = SinglyLinkedList()
-arr = [2,4,6,8,10,12]
+arr = [2,4,26,334,558,10,12]
 for i in arr :
     l1.add_last(i)
 
 l1.print_list()
 print()
-l1.reverse()
+l1.sort()
 l1.print_list()
