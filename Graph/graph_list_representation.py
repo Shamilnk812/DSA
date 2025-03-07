@@ -66,6 +66,29 @@ class Graph:
 
 
 
+def helper_is_cyclic(node,graph,visited,parent):
+    visited[node] = True
+    for neighbour in graph[node]:
+        if not visited[neighbour]:
+            if helper_is_cyclic(neighbour,graph,visited,node):
+                return True
+        elif neighbour != parent:
+            return True
+    return False        
+
+
+def is_cyclic(graph):
+
+    visited = {node:False for node in graph}
+    for node in graph :
+        if not visited[node]:
+            if helper_is_cyclic(node,graph,visited,-1):
+                return True
+    return False        
+
+
+
+
 
 g1 = Graph()
 g1.add_edges('A','B')
@@ -78,7 +101,7 @@ print('')
 g1.bfs('A')
 # print(g1.graph)
 
-
+print(is_cyclic(g1.graph))
 
 
 
