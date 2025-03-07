@@ -85,7 +85,7 @@ class Trie:
         return result    
 
     
-    def find_logest_prefix(self):
+    def find_logest_word(self):
         longest = [""]
         def dfs(node,word):
             if node.is_end:
@@ -98,7 +98,7 @@ class Trie:
         dfs(node,"")
         return longest[0]
     
-    def find_smallest_prefix(self):
+    def find_smallest_word(self):
         queue = [(self.root, "")]  # Initialize a queue with the root node and an empty word.
     
         while queue:  # Loop until queue is empty
