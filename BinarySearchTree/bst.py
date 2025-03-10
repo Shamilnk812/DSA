@@ -161,18 +161,38 @@ class BST :
                 queue.append(current_node.rchild)
 
     
+    # Height of BST
+    def height_of_tree(self):
+        # if self is None:
+        #     return -1
+        
+        left_height = self.lchild.height_of_tree() if self.lchild else -1
+        right_heiht = self.rchild.height_of_tree() if self.rchild else -1
+
+        return max(left_height,right_heiht) + 1
+
+
+
+
+# functoin for find height of BST
+def h_of_tree(node):
+    if node is None:
+        return -1 
+    
+    left_height = h_of_tree(node.lchild)
+    right_height = h_of_tree(node.rchild)
+    return max(left_height,right_height) + 1
+
+
+
+
+
 
 arr = [25,100,40,8,3,200,50,-1,45]
-
 b1 = BST(15)      
 for i in arr :
     b1.insert_values(i)
 b1.pre_order()
 
-# print(b1.find_min())
-print('-------')
-print(b1.find_second_smallest_values())
-print('---------')
-print(b1.find_second_largest_value())
-
-b1.level_order_traversal()
+print(b1.height_of_tree())
+print(h_of_tree(b1))
