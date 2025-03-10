@@ -143,6 +143,25 @@ class BST :
         return parent_node.key        
     
 
+    # Level order traversal 
+    def level_order_traversal(self):  
+        if self is None:
+            return
+        
+        queue = [self]  # Initialize queue
+        
+        while queue:
+            current_node = queue.pop(0)  # Dequeue first element
+            print(current_node.key, end=" - ") 
+            
+            # Enqueue left and right children if they exist
+            if current_node.lchild:
+                queue.append(current_node.lchild)
+            if current_node.rchild:
+                queue.append(current_node.rchild)
+
+    
+
 arr = [25,100,40,8,3,200,50,-1,45]
 
 b1 = BST(15)      
@@ -155,3 +174,5 @@ print('-------')
 print(b1.find_second_smallest_values())
 print('---------')
 print(b1.find_second_largest_value())
+
+b1.level_order_traversal()
