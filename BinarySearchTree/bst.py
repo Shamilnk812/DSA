@@ -171,6 +171,27 @@ class BST :
 
         return max(left_height,right_heiht) + 1
 
+    
+    # Kth smallest value
+    def find_kth_smallest_value(self,k):
+        count = 0
+        result = None
+
+        def helper_func(node):
+            nonlocal count , result
+            if node is None or result is not None:
+                return
+            
+            helper_func(node.lchild)
+            count += 1
+            if count == k :
+                result =  node.key
+                return
+            helper_func(node.rchild)
+
+        helper_func(self)
+        return result
+    
 
 
 
@@ -189,10 +210,12 @@ def h_of_tree(node):
 
 
 arr = [25,100,40,8,3,200,50,-1,45]
-b1 = BST(15)      
+
+b1 = BST(30)      
 for i in arr :
     b1.insert_values(i)
 b1.pre_order()
 
 print(b1.height_of_tree())
 print(h_of_tree(b1))
+print(b1.find_kth_smallest_value(3))
