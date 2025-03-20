@@ -194,6 +194,29 @@ class BST :
     
 
 
+    # kth largest value
+    def find_kth_largest_value(self,k):
+        count = 0
+        result = None
+        def helper_func(node):
+            nonlocal count , result
+            if node is None or result is not None :
+                return 
+            
+            helper_func(node.rchild)
+            count += 1
+            if count == k :
+                result = node.key
+                return
+            helper_func(node.lchild)
+
+        helper_func(self)
+        return result
+
+
+    
+
+
 
 # functoin for find height of BST
 def h_of_tree(node):
