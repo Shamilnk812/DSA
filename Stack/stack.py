@@ -39,3 +39,26 @@ def reverse_strings(strr) :
     return reversed_str
 
 
+
+
+
+def is_valid_parentheses(strr):
+    stack = []
+    bracket_map = {')': '(', '}': '{', ']': '['}
+
+    for char in strr:
+        if char in bracket_map.values():  # If it's an opening bracket, push to stack
+            stack.append(char)
+        elif char in bracket_map.keys():  # If it's a closing bracket
+            if not stack or stack.pop() != bracket_map[char]:  # Check if top matches
+                return False
+        else:
+            return False  
+        
+    return len(stack) == 0  
+
+
+print(is_valid_parentheses("({[]})"))  
+print(is_valid_parentheses("({[)]}"))  
+print(is_valid_parentheses("((()))"))  
+
