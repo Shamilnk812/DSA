@@ -24,8 +24,22 @@ class DoublyLinkedList:
             new_node.next = self.head
             self.head.prev = new_node
             self.head = new_node
+    
 
 
+    def insert_values_at_end(self,value):
+        new_node = Node(value)
+
+        if self.head is None :
+            self.head  = new_node
+        else:
+            node = self.head
+            while node.next is not None :
+                node = node.next
+            node.next = new_node    
+   
+
+    
     def print_list(self):
         node = self.head
         if node is None:
@@ -38,11 +52,11 @@ class DoublyLinkedList:
 
 
 
-
+    
 
 val = [23,55,22,33,4]
 d1 = DoublyLinkedList()
 for v in val:
-    d1.insert_values_at_first(v)
+    d1.insert_values_at_end(v)
 d1.print_list()    
     
