@@ -40,6 +40,23 @@ class DoublyLinkedList:
    
 
     
+    def reverse(self):
+        if self.head is None:
+            return
+        
+        temp = None
+        current = self.head
+
+        while current:
+            temp = current.prev
+            current.prev = current.next
+            current.next = temp
+            current = current.prev  
+
+        if temp:
+            self.head = temp.prev
+
+    
     def print_list(self):
         node = self.head
         if node is None:
@@ -58,5 +75,7 @@ val = [23,55,22,33,4]
 d1 = DoublyLinkedList()
 for v in val:
     d1.insert_values_at_end(v)
-d1.print_list()    
+    
+d1.reverse()
+d1.print_list()
     
