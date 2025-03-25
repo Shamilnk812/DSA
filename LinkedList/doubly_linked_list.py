@@ -37,7 +37,30 @@ class DoublyLinkedList:
             while node.next is not None :
                 node = node.next
             node.next = new_node    
-   
+    
+
+
+    def delete_first(self):
+        if self.head is None:
+            print("Doubly linked list is empty, nothing to delete.")
+            return
+        self.head = self.head.next
+        if self.head:
+            self.head.prev = None
+
+
+
+    def delete_last(self):
+        if self.head is None:
+            print("Doubly linked list is empty, nothing to delete.")
+            return
+        node = self.head
+        while node.next:
+            node = node.next
+        if node.prev:
+            node.prev.next = None
+        else:
+            self.head = None
 
     
     def reverse(self):
